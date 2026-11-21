@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VoltIQ · Plataforma de Telemetría Energética Industrial</title>
+  <meta name="description" content="VoltIQ monitorea en tiempo real el consumo eléctrico, la calidad de energía y la salud de los equipos en plantas industriales.">
+  <meta name="theme-color" content="#0b3d91">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VoltIQ · Telemetría Energética Industrial">
+  <meta property="og:description" content="Dashboard de telemetría en tiempo real para plantas industriales.">
+  <meta property="og:image" content="https://raiikido.github.io/voltiq/img/og-voltiq.png">
+  <meta property="og:url" content="https://raiikido.github.io/voltiq/">
+  <meta property="og:locale" content="es_VE">
+
+  <!-- Tipografías optimizadas: preconnect + display=swap (evita texto invisible, mejora LCP/CLS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 (CSS) + estilos propios -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- Enlace de salto: primer elemento enfocable con Tab (WCAG 2.4.1) -->
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
+          <img src="img/favicon.svg" alt="" width="32" height="32">
+          <span>Volt<strong>IQ</strong></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú de navegación">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#telemetria">Telemetría</a></li>
+            <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+            <li class="nav-item"><a class="btn btn-accent ms-lg-3 mt-2 mt-lg-0" href="#cotizacion">Solicitar cotización</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section id="inicio" class="hero container" aria-labelledby="hero-titulo">
+      <div class="hero__text">
+        <p class="eyebrow">Industria 4.0 · IoT · Eficiencia energética</p>
+        <h1 id="hero-titulo">Cada kilovatio de su planta, visible en tiempo real.</h1>
+        <p class="lead">VoltIQ conecta medidores inteligentes, PLC y sensores a un panel único para detectar picos de demanda, desbalances de fase y fallas antes de que detengan la producción.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#telemetria" class="btn btn-accent btn-lg">Ver panel en vivo</a>
+          <a href="#servicios" class="btn btn-outline-light btn-lg">Conocer servicios</a>
+        </div>
+      </div>
+      <ul class="hero__stats" aria-label="Indicadores clave">
+        <li><strong>−18 %</strong><span>consumo promedio</span></li>
+        <li><strong>1 s</strong><span>resolución de muestreo</span></li>
+        <li><strong>99,9 %</strong><span>disponibilidad</span></li>
+      </ul>
+    </section>
+  </header>
+
+  <!-- Layout global con CSS Grid: contenido + barra lateral -->
+  <div class="page-layout container">
+    <main id="contenido" tabindex="-1">
+
+      <section id="servicios" aria-labelledby="servicios-titulo" class="block">
+        <h2 id="servicios-titulo">Servicios</h2>
+        <p class="section-intro">Módulos independientes que se integran según la madurez digital de cada planta.</p>
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card h-100">
+              <div class="card-body">
+                <span class="service-card__icon" aria-hidden="true">⚡</span>
+                <h3 class="card-title h5">Monitoreo de demanda</h3>
+                <p class="card-text">Medición de kW, kVA y factor de potencia por circuito con alertas de pico configurables.</p>
+              </div>
+              <div class="card-footer"><a href="#cotizacion" class="stretched-link" aria-label="Cotizar Monitoreo de demanda">Cotizar módulo →</a></div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card h-100">
+              <div class="card-body">
+                <span class="service-card__icon" aria-hidden="true">📈</span>
+                <h3 class="card-title h5">Calidad de energía</h3>
+                <p class="card-text">Análisis de armónicos (THD), sags y swells de tensión según IEEE 519 e IEC 61000.</p>
+              </div>
+              <div class="card-footer"><a href="#cotizacion" class="stretched-link" aria-label="Cotizar Calidad de energía">Cotizar módulo →</a></div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card h-100">
+              <div class="card-body">
+                <span class="service-card__icon" aria-hidden="true">🛠️</span>
+                <h3 class="card-title h5">Mantenimiento predictivo</h3>
+                <p class="card-text">Modelos que correlacionan vibración, temperatura y corriente para anticipar fallas en motores.</p>
+              </div>
+              <div class="card-footer"><a href="#cotizacion" class="stretched-link" aria-label="Cotizar Mantenimiento predictivo">Cotizar módulo →</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="telemetria" aria-labelledby="telemetria-titulo" class="block">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+          <div>
+            <h2 id="telemetria-titulo" class="mb-1">Telemetría en vivo</h2>
+            <p class="section-intro mb-0">Simulación de demanda trifásica (kW) renderizada en <code>&lt;canvas&gt;</code> a 60 FPS.</p>
+          </div>
+          <div class="d-flex gap-2" role="group" aria-label="Controles del gráfico">
+            <button id="btnPausa" class="btn btn-outline-primary" type="button" aria-pressed="false">Pausar</button>
+            <button id="btnPico" class="btn btn-outline-danger" type="button">Simular pico</button>
+          </div>
+        </div>
+        <figure class="chart-card">
+          <canvas id="graficoTelemetria" width="900" height="360" role="img"
+                  aria-label="Gráfico de líneas en tiempo real con la demanda en kilovatios de las fases L1, L2 y L3.">
+            Su navegador no soporta canvas. Demanda actual: ver lecturas en el panel lateral.
+          </canvas>
+          <figcaption class="chart-legend">
+            <span class="legend-item"><i class="swatch swatch--l1"></i>Fase L1</span>
+            <span class="legend-item"><i class="swatch swatch--l2"></i>Fase L2</span>
+            <span class="legend-item"><i class="swatch swatch--l3"></i>Fase L3</span>
+            <span class="legend-item legend-item--limit"><i class="swatch swatch--limit"></i>Límite contratado</span>
+          </figcaption>
+        </figure>
+        <!-- Región viva para lectores de pantalla (se actualiza cada 5 s, no en cada fotograma) -->
+        <p id="lecturaAccesible" class="visually-hidden" aria-live="polite"></p>
+      </section>
+
+      <section id="demo" aria-labelledby="demo-titulo" class="block">
+        <h2 id="demo-titulo">Recorrido en video</h2>
+        <p class="section-intro">Video ilustrativo con subtítulos en español (pista WebVTT).</p>
+        <div class="ratio ratio-16x9 video-wrap">
+          <video controls preload="metadata" poster="img/poster.svg" width="1280" height="720"
+                 aria-describedby="demo-desc">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+            <track kind="subtitles" src="media/subtitulos-es.vtt" srclang="es" label="Español" default>
+            Su navegador no reproduce video HTML5. <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">Descargue el video</a>.
+          </video>
+        </div>
+        <p id="demo-desc" class="small text-secondary mt-2">Video de muestra con licencia CC0 (MDN). Sustitúyalo por la grabación real del panel.</p>
+      </section>
+
+      <section id="cotizacion" aria-labelledby="cotizacion-titulo" class="block">
+        <h2 id="cotizacion-titulo">Solicitar cotización</h2>
+        <p class="section-intro">Los campos marcados con <span aria-hidden="true">*</span><span class="visually-hidden">asterisco</span> son obligatorios.</p>
+
+        <form id="formCotizacion" class="quote-form needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label for="nombre" class="form-label">Nombre completo *</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="name"
+                     required minlength="3" maxlength="60" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+                     aria-describedby="nombre-error">
+              <div id="nombre-error" class="invalid-feedback">Ingrese entre 3 y 60 letras.</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="email" class="form-label">Correo corporativo *</label>
+              <input type="email" class="form-control" id="email" name="email" autocomplete="email"
+                     required maxlength="80" aria-describedby="email-error">
+              <div id="email-error" class="invalid-feedback">Ingrese un correo válido (ej. nombre@empresa.com).</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="telefono" class="form-label">Teléfono *</label>
+              <input type="tel" class="form-control" id="telefono" name="telefono" autocomplete="tel"
+                     required pattern="^(\+58)?0?4(12|14|16|24|26)[0-9]{7}$" placeholder="04141234567"
+                     aria-describedby="telefono-ayuda telefono-error">
+              <div id="telefono-ayuda" class="form-text">Formato venezolano: 0414 1234567 o +58 4141234567 (sin espacios).</div>
+              <div id="telefono-error" class="invalid-feedback">Número móvil venezolano no válido.</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="sector" class="form-label">Sector industrial *</label>
+              <input class="form-control" list="sectores" id="sector" name="sector" required minlength="3" maxlength="40"
+                     aria-describedby="sector-ayuda sector-error">
+              <datalist id="sectores">
+                <option value="Alimentos y bebidas">
+                <option value="Petróleo y gas">
+                <option value="Petroquímica">
+                <option value="Manufactura metalmecánica">
+                <option value="Farmacéutica">
+                <option value="Minería">
+                <option value="Data center">
+              </datalist>
+              <div id="sector-ayuda" class="form-text">Elija una sugerencia o escriba el suyo.</div>
+              <div id="sector-error" class="invalid-feedback">Indique el sector (mín. 3 caracteres).</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="medidores" class="form-label">Número de medidores *</label>
+              <input type="number" class="form-control" id="medidores" name="medidores" required min="1" max="500"
+                     aria-describedby="medidores-error">
+              <div id="medidores-error" class="invalid-feedback">Entre 1 y 500 medidores.</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <fieldset>
+                <legend class="form-label fs-6">Módulos de interés</legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="modDemanda" name="modulos" value="demanda">
+                  <label class="form-check-label" for="modDemanda">Demanda</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="modCalidad" name="modulos" value="calidad">
+                  <label class="form-check-label" for="modCalidad">Calidad</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="modPredictivo" name="modulos" value="predictivo">
+                  <label class="form-check-label" for="modPredictivo">Predictivo</label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-12">
+              <label for="mensaje" class="form-label">Descripción de la planta *</label>
+              <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required minlength="20" maxlength="500"
+                        aria-describedby="mensaje-contador mensaje-error"></textarea>
+              <div id="mensaje-contador" class="form-text" aria-live="polite">0 / 500 caracteres</div>
+              <div id="mensaje-error" class="invalid-feedback">Describa la planta en al menos 20 caracteres.</div>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="acepto" required aria-describedby="acepto-error">
+                <label class="form-check-label" for="acepto">Acepto ser contactado con fines comerciales *</label>
+                <div id="acepto-error" class="invalid-feedback">Debe aceptar para continuar.</div>
+              </div>
+            </div>
+            <div class="col-12 d-flex flex-wrap gap-2">
+              <button class="btn btn-primary btn-lg" type="submit">Enviar solicitud</button>
+              <button class="btn btn-outline-secondary btn-lg" type="reset">Limpiar</button>
+            </div>
+          </div>
+        </form>
+        <div id="formResultado" class="alert alert-success mt-3 d-none" role="status" tabindex="-1"></div>
+      </section>
+    </main>
+
+    <aside class="sidebar" aria-labelledby="estado-titulo">
+      <div class="status-panel">
+        <h2 id="estado-titulo" class="h5">Estado de la planta</h2>
+        <dl class="kpi-list">
+          <div class="kpi"><dt>Demanda total</dt><dd><span id="kpiTotal">—</span> kW</dd></div>
+          <div class="kpi"><dt>Pico del turno</dt><dd><span id="kpiPico">—</span> kW</dd></div>
+          <div class="kpi"><dt>Factor de potencia</dt><dd><span id="kpiFp">0,94</span></dd></div>
+          <div class="kpi"><dt>Desbalance de fases</dt><dd><span id="kpiDesb">—</span> %</dd></div>
+        </dl>
+        <p id="alerta" class="badge-status badge-status--ok" role="status">Operación normal</p>
+      </div>
+      <nav class="status-panel" aria-label="Recursos">
+        <h2 class="h6">Recursos</h2>
+        <ul class="list-unstyled mb-0">
+          <li><a href="https://developer.mozilla.org/es/docs/Web/API/Canvas_API">API Canvas (MDN)</a></li>
+          <li><a href="https://getbootstrap.com/docs/5.3/">Bootstrap 5.3</a></li>
+          <li><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 (W3C)</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-3">
+      <p class="mb-0">&copy; 2026 VoltIQ — Proyecto académico, Universidad Bicentenaria de Aragua.</p>
+      <address class="mb-0">Contacto: <a href="mailto:contacto@voltiq.example">contacto@voltiq.example</a></address>
+    </div>
+  </footer>
+
+  <!-- Bootstrap bundle (incluye Popper; sin jQuery). defer = no bloquea el renderizado -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
