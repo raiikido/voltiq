@@ -1,0 +1,186 @@
+/* =========================================================
+   VoltIQ — Hoja de estilos
+   1. Tokens de diseño (Custom Properties)
+   2. Base y accesibilidad
+   3. Layout global (CSS Grid)
+   4. Componentes (Flexbox)
+   5. Preferencias del usuario
+   ========================================================= */
+
+/* 1. Tokens ------------------------------------------------ */
+:root {
+  --primary-color: #0b3d91;      /* contraste 10.4:1 sobre blanco */
+  --primary-dark: #072a66;
+  --accent: #ffb703;             /* sobre --primary-dark: 8.9:1 */
+  --accent-ink: #1d1d1d;
+  --surface: #ffffff;
+  --surface-alt: #f3f6fb;
+  --text: #1b2333;
+  --text-muted: #4a5568;         /* 7.4:1 sobre blanco */
+  --danger: #b42318;
+  --success: #067647;
+
+  --phase-l1: #0b5fff;
+  --phase-l2: #d94f00;
+  --phase-l3: #0f8a5f;
+
+  --font-main: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --spacing-unit: 0.5rem;
+  --radius: 1rem;
+  --shadow-sm: 0 2px 6px rgb(11 61 145 / 0.08);
+  --shadow-lg: 0 14px 32px rgb(11 61 145 / 0.18);
+  --transition: 220ms cubic-bezier(.2, .8, .2, 1);
+
+  /* Integración con Bootstrap: sus variables apuntan a nuestros tokens */
+  --bs-primary: var(--primary-color);
+  --bs-primary-rgb: 11, 61, 145;
+  --bs-body-font-family: var(--font-main);
+  --bs-body-color: var(--text);
+  --bs-link-color: var(--primary-color);
+  --bs-link-color-rgb: 11, 61, 145;
+}
+
+/* 2. Base ----------------------------------------------------- */
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--spacing-unit) * 10); }
+body { font-family: var(--font-main); color: var(--text); background: var(--surface-alt); }
+h1, h2, h3, h4, h5, h6 { color: inherit; }
+h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; }
+code { font-family: var(--font-mono); }
+
+.skip-link {
+  position: absolute; left: var(--spacing-unit); top: -100px; z-index: 2000;
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+  background: var(--accent); color: var(--accent-ink); font-weight: 600; border-radius: .5rem;
+}
+.skip-link:focus { top: var(--spacing-unit); }
+
+/* Foco visible y consistente (WCAG 2.4.7 / 2.4.11) */
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.form-control:focus-visible, .form-check-input:focus-visible { outline-offset: 1px; }
+
+.btn-primary { --bs-btn-bg: var(--primary-color); --bs-btn-border-color: var(--primary-color);
+  --bs-btn-hover-bg: var(--primary-dark); --bs-btn-hover-border-color: var(--primary-dark); }
+.btn-outline-primary { --bs-btn-color: var(--primary-color); --bs-btn-border-color: var(--primary-color);
+  --bs-btn-hover-bg: var(--primary-color); --bs-btn-hover-border-color: var(--primary-color); }
+.btn-accent { background: var(--accent); color: var(--accent-ink); font-weight: 600; border: 0; }
+.btn-accent:hover, .btn-accent:focus-visible { background: #ffc933; color: var(--accent-ink); }
+
+/* 3. Layout global con CSS Grid ------------------------------- */
+.site-header {
+  background: radial-gradient(circle at 85% 10%, #1d5fd1 0, transparent 45%),
+              linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  color: #fff;
+}
+.navbar { padding-block: calc(var(--spacing-unit) * 1.5); }
+.navbar .nav-link { color: rgb(255 255 255 / .9); }
+.navbar .nav-link:hover, .navbar .nav-link:focus-visible { color: var(--accent); }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;               /* Mobile-first */
+  gap: calc(var(--spacing-unit) * 4);
+  padding-block: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 8);
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.1; }
+.hero .lead { color: rgb(255 255 255 / .9); max-width: 60ch; }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; color: var(--accent); font-weight: 600; }
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "main" "aside";
+  gap: calc(var(--spacing-unit) * 4);
+  padding-block: calc(var(--spacing-unit) * 6);
+}
+main { grid-area: main; min-width: 0; }
+.sidebar { grid-area: aside; }
+
+@media (min-width: 992px) {
+  .hero { grid-template-columns: 1.6fr 1fr; align-items: center; }
+  .page-layout { grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "main aside"; }
+  .sidebar { position: sticky; top: calc(var(--spacing-unit) * 3); align-self: start; }
+}
+
+/* 4. Componentes (Flexbox) ------------------------------------ */
+.hero__stats {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: calc(var(--spacing-unit) * 2);
+}
+.hero__stats li {
+  flex: 1 1 140px;
+  display: flex; flex-direction: column;
+  padding: calc(var(--spacing-unit) * 2.5);
+  background: rgb(255 255 255 / .1); border: 1px solid rgb(255 255 255 / .2);
+  border-radius: var(--radius); backdrop-filter: blur(6px);
+}
+.hero__stats strong { font-size: 1.8rem; color: var(--accent); }
+
+.block {
+  background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  padding: calc(var(--spacing-unit) * 4);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+.section-intro { color: var(--text-muted); }
+
+/* Tarjetas de servicios */
+.service-card {
+  border: 1px solid #e3e9f3; border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.service-card:hover, .service-card:focus-within {
+  transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary-color);
+}
+.service-card .card-body { display: flex; flex-direction: column; gap: var(--spacing-unit); }
+.service-card__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 3rem; height: 3rem; font-size: 1.5rem;
+  background: var(--surface-alt); border-radius: .75rem;
+}
+.service-card .card-footer { background: transparent; border-top: 0; padding-top: 0; }
+.service-card .card-footer a { font-weight: 600; text-decoration: none; }
+
+/* Gráfico canvas */
+.chart-card { margin: 0; background: #0d1526; border-radius: var(--radius); padding: calc(var(--spacing-unit) * 2); }
+#graficoTelemetria { width: 100%; height: auto; aspect-ratio: 900 / 360; display: block; }
+.chart-legend {
+  display: flex; flex-wrap: wrap; gap: calc(var(--spacing-unit) * 2);
+  justify-content: center; color: #e2e8f0; font-size: .9rem; padding-top: var(--spacing-unit);
+}
+.legend-item { display: inline-flex; align-items: center; gap: var(--spacing-unit); }
+.swatch { width: 1.25rem; height: .3rem; border-radius: 2px; display: inline-block; }
+.swatch--l1 { background: #5b93ff; } .swatch--l2 { background: #ff8a3d; }
+.swatch--l3 { background: #34d399; } .swatch--limit { background: repeating-linear-gradient(90deg, #f87171 0 4px, transparent 4px 8px); }
+
+.video-wrap { border-radius: var(--radius); overflow: hidden; background: #000; }
+.video-wrap video { object-fit: cover; }
+
+/* Formulario */
+.quote-form .form-control, .quote-form .form-check-input { border-color: #8a94a6; } /* borde 3:1 (WCAG 1.4.11) */
+.quote-form .form-control { padding: calc(var(--spacing-unit) * 1.5); border-radius: .6rem; }
+.invalid-feedback { color: var(--danger); }
+.valid-feedback { color: var(--success); }
+
+/* Panel lateral */
+.status-panel {
+  background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  padding: calc(var(--spacing-unit) * 3); margin-bottom: calc(var(--spacing-unit) * 3);
+}
+.kpi-list { margin: 0; display: flex; flex-direction: column; gap: calc(var(--spacing-unit) * 1.5); }
+.kpi { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dashed #d5dbe6; padding-bottom: var(--spacing-unit); }
+.kpi dt { font-weight: 400; color: var(--text-muted); }
+.kpi dd { margin: 0; font-family: var(--font-mono); font-weight: 500; }
+.badge-status { margin: calc(var(--spacing-unit) * 2) 0 0; padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5); border-radius: 999px; font-weight: 600; text-align: center; }
+.badge-status--ok { background: #dcfae6; color: var(--success); }
+.badge-status--alert { background: #fee4e2; color: var(--danger); }
+
+.site-footer { background: var(--primary-dark); color: #e2e8f0; padding-block: calc(var(--spacing-unit) * 4); }
+.site-footer a { color: var(--accent); }
+
+/* 5. Preferencias del usuario --------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  .service-card:hover { transform: none; }
+}
